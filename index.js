@@ -26,9 +26,10 @@ function proceduralFormatter(number){
     return formattedArray.join("")
 }
 
-const { flow, chunk, reverse, split, join, flatten, map } = require("lodash/fp")
+const { flow, chunk, reverse, split, join, flatten, map, toString } = require("lodash/fp")
 function functionalFormatter(number){
     return flow([
+        toString,
         split(""),
         reverse,
         chunk(3),
@@ -36,7 +37,7 @@ function functionalFormatter(number){
         flatten,
         reverse,
         join(",")
-    ])(number.toString())
+    ])(number)
 }
 
 function builtInFormatter(number){
